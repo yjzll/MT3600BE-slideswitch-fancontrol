@@ -1,0 +1,22 @@
+GL.inet添加openclash开关
+
+1.安装openssh-sftp-server
+    “高级设置”->“前往LuCi”
+    “系统”->“软件包”->“更新列表”
+
+2.拷贝 openclash.sh 到 /etc/gl-switch.d/ 目录下
+    打开终端
+    进入 openclash.sh 文件所在目录
+    cd mt3000
+    scp /xxx/openclash.sh root@192.168.8.1:/etc/gl-switch.d/
+
+3.给文件执行权限
+    先通过终端登入路由器：
+    ssh root@@192.168.8.1
+    赋予文件执行权限
+    chmod a+x /etc/gl-switch.d/openclash.sh
+
+4.设置关联openclash
+    这里需要保持登陆路由器后台
+    uci set switch-button.@main[0].func='openclash'
+    uci commit switch-button

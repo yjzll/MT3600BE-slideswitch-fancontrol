@@ -1,0 +1,16 @@
+OpenWrt添加openclash开关
+
+1.安装 openssh-sftp-server
+    “系统”->“软件包”->“更新列表”
+
+2.拷贝 BTN_0 到 /etc/rc.button/ 目录下
+    打开终端
+    进入本地 BTN_0 文件所在目录
+    cd mt3000
+    scp /xxx/BTN_0 root@192.168.6.1:/etc/rc.button/
+    
+3.给文件执行权限
+    先通过终端登入路由器：
+    ssh root@@192.168.6.1
+    赋予文件执行权限
+    chmod a+x /etc/rc.button/BTN_0

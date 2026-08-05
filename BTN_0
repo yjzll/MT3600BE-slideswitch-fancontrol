@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ "$BUTTON" = "BTN_0" ]; then
+    if [ "$ACTION" = "pressed" ]; then
+        # 对应物理位置：左侧 (ON)
+        logger "拨动开关已切换至：左侧/ON"
+        
+        # 如果你已经配置了 openclash.sh，可以在此启动：
+        uci set openclash.config.enable='1'
+        uci commit openclash
+        /etc/init.d/openclash start
+        
+        # 联动：开启LED灯
+        #echo none > /sys/class/leds/white:system/trigger
+        #echo 255 > /sys/class/leds/white:system/brightness
+
+    elif [ "$ACTION" = "released" ]; then
+        # 对应物理位置：右侧 (OFF)
+        logger "拨动开关已切换至：右侧/OFF"
+
+        # 如果你已经配置了 openclash.sh，可以在此关闭：
+        uci set openclash.config.enable='0'
+        uci commit openclash
+        /etc/init.d/openclash stop
+        
+        # 联动：关闭LED灯
+        #echo none > /sys/class/leds/white:system/trigger
+        #echo 0 > /sys/class/leds/white:system/brightness
+
+    fi
+fi
+
+exit 0
