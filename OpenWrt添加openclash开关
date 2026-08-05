@@ -1,0 +1,5 @@
+OpenWrt添加openclash开关
+
+拷贝 BTN_0 到 /etc/rc.button/ 目录下
+给文件执行权限
+    chmod a+x /etc/rc.button/BTN_0
